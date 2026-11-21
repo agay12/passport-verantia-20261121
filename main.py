@@ -15,9 +15,10 @@ GOLD = (150, 122, 58)
 RED = (146, 48, 48)
 BLUE = (44, 70, 104)
 
-FD = "/usr/share/fonts/truetype/dejavu/"
+FONTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
+FD = FONTS if os.path.isdir(FONTS) and os.listdir(FONTS) else "/usr/share/fonts/truetype/dejavu/"
 def F(name, size):
-    return ImageFont.truetype(FD + name, size)
+    return ImageFont.truetype(os.path.join(FD, name), size)
 
 serif_b = lambda s: F("DejaVuSerif-Bold.ttf", s)
 serif = lambda s: F("DejaVuSerif.ttf", s)
